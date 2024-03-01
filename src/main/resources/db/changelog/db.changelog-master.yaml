@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/00000000000000.xml
+  - include:
+      file: db/changelog/00000000000001.xml
+  - include:
+      file: db/changelog/00000000000002.xml    
+  - include:
+      file: db/changelog/00000000000003.xml      

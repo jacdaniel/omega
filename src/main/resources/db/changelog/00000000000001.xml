@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
+http://www.liquibase.org/xml/ns/dbchangelog-ext http://wwW.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+	<changeSet id="0000000000000" author="ring">
+
+		<createTable tableName="framework">
+			<column name="id" type="varchar(5000)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			
+			<column name="version" type="BIGINT">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="code" type="varchar(5000)">
+				<constraints nullable="false" unique="true" uniqueConstraintName="ux_framework_code" />
+			</column>
+			
+			<column name="label" type="varchar(5000)">
+				<constraints nullable="true" />
+			</column>
+			
+			<column name="created_by" type="varchar(5000)" defaultValue="system" >
+				<constraints nullable="false" />
+			</column>
+	
+			<column name="last_modified_by" type="varchar(5000)" defaultValue="system" >
+				<constraints nullable="false" />
+			</column>
+			
+			<column name="created_date" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP" >
+				<constraints nullable="false" />
+			</column>	
+				
+			<column name="last_modified_date" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP" >
+				<constraints nullable="false" />
+			</column>			
+
+		</createTable>
+	</changeSet>
+	
+	<changeSet id="00000000000001" author="ring">
+	<loadData
+		file="db/data/00000000000001.csv"
+		separator=";"
+		tableName="framework">
+		<column name="id" type="string" />
+		<column name="version" type="numeric" />
+		<column name="code" type="string" />
+		<column name="label" type="string" />
+		</loadData>
+	</changeSet>
+
+</databaseChangeLog>

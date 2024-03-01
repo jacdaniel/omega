@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ring
+    username: ring
+    password: ring
+    
+    codec:
+        max-in-memory-size: 200MB
+
+    
+    
